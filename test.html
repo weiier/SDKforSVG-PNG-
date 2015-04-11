@@ -1,0 +1,57 @@
+<html>
+<head>
+
+<style type="text/css">
+div{
+position: absolute;
+border: #09F solid 1px;
+font-weight: 900;
+padding: 10px;
+display: block;
+width: 500px;
+height: 400px;
+margin-top: -1px;
+margin-left: -1px;
+
+}
+</style>
+
+</head>
+<body>
+<div id="example"> SUCCESS</div>
+
+<script src="Hammer.js"></script>
+<script>
+	var div = document.getElementById("example");
+	var value = 0;
+	function rotate() {
+		value = value+1;
+		document.getElementById('example').style.webkitTransform="rotate(" + value + "deg)";
+		document.getElementById('example').style.msTransform="rotate(" + value + "deg)";
+		document.getElementById('example').style.MozTransform="rotate(" + value + "deg)";
+		document.getElementById('example').style.OTransform="rotate(" + value + "deg)";
+		document.getElementById('example').style.transform="rotate(" + value + "deg)";
+	}
+	var hammer = new Hammer(div);
+	hammer.get('rotate').set({enable:true}); 
+	hammer.on("panstart",function(ev){
+		console.log("drag");
+		alert("drag");
+	});
+	hammer.on("pan",function(ev){
+		console.log("drag");
+		alert("drag");
+	});
+	hammer.on("panend",function(ev){
+	});
+	hammer.on("tap",function(ev){
+		alert("click");
+	});
+	hammer.on("rotatestart rotatemove",function(){
+		//rotate();
+		alert("rotate");
+	})
+</script>
+
+</body>
+</html> 
